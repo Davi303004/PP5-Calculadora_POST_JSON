@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Calculadora</title>
 </head>
-<body class="bg-light">
+<body class="bg-muted">
   <div class="container py-5">
     <div class="row justify-content-center">
       <!-- Painel da Calculadora -->
-      <div class="col-md-6">
+      <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="card shadow-sm">
           <div class="card-body bg-dark rounded">
             <!-- Visor -->
@@ -23,7 +23,7 @@
                 readonly
               >
             </div>
-            <div class="row g-2">
+            <div class="row g-4 ">
               <!-- Teclado Numérico -->
               <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="row gy-2">
@@ -70,13 +70,13 @@
                 </div>
               </div>
               <!-- Seletor de Operações -->
-              <div class="col-4 d-flex flex-column justify-content-between">
-                <div class="d-grid gap-2 h-100 p-4 ">
-                  <button class="btn btn-warning">+</button>
-                  <button class="btn btn-warning">−</button>
-                  <button class="btn btn-warning">×</button>
-                  <button class="btn btn-warning">÷</button>
-                  <button class="btn btn-danger">C</button>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="d-grid gap-2 h-100 p-1 ">
+                  <button class="btn btn-light m-1">+</button>
+                  <button class="btn btn-light m-1">−</button>
+                  <button class="btn btn-light m-1">×</button>
+                  <button class="btn btn-light m-1">÷</button>
+                  <button class="btn btn-danger m-1">C</button>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
   </div>
 </body>
     <script type="text/javascript">
-       let numero1 = '';
+    let numero1 = '';
     let numero2 = '';
     let operacao = '';
     let isSecond = false;
