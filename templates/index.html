@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Calculadora</title>
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <!-- Painel da Calculadora -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body bg-dark rounded">
+            <!-- Visor -->
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg text-end"
+                id="display"
+                placeholder="0"
+                readonly
+              >
+            </div>
+            <div class="row g-2">
+              <!-- Teclado Numérico -->
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="row gy-2">
+                  <!-- Linha 1: 7 8 9 -->
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">7</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">8</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">9</button>
+                  </div>
+                  <!-- Linha 2: 4 5 6 -->
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">4</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">5</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">6</button>
+                  </div>
+                  <!-- Linha 3: 1 2 3 -->
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">1</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">2</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">3</button>
+                  </div>
+                  <!-- Linha 4: 0 . = -->
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">0</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-secondary w-100">.</button>
+                  </div>
+                  <div class="col-4 p-1">
+                    <button class="btn btn-primary w-100">=</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Seletor de Operações -->
+              <div class="col-4 d-flex flex-column justify-content-between">
+                <div class="d-grid gap-2 h-100 p-4 ">
+                  <button class="btn btn-warning">+</button>
+                  <button class="btn btn-warning">−</button>
+                  <button class="btn btn-warning">×</button>
+                  <button class="btn btn-warning">÷</button>
+                  <button class="btn btn-danger">C</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</body>
+    <script type="text/javascript">
+       let numero1 = '';
+    let numero2 = '';
+    let operacao = '';
+    let isSecond = false;
+
+    const display = document.getElementById('display');
+    const botoes = document.querySelectorAll('button');
+
+    botoes.forEach(btn => {
+        btn.addEventListener('click', () => {
+        let valor = btn.innerText;
+
+        if (!isNaN(valor) || valor === '.') {
+            if (!isSecond) {
+            numero1 += valor;
+            display.value = numero1;
+            } else {
+            numero2 += valor;
+            display.value = numero2;
+            }
+        } else if (['+', '−', '×', '÷'].includes(valor)) {
+            operacao = valor;
+            isSecond = true;
+        }
+         else if (valor === 'C') {
+            numero1 = '';
+            numero2 = '';
+            operacao = '';
+            isSecond = false;
+            display.value = '';
+        } else if (valor === '=') {
+            fetch('/calcular', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                numero1: parseFloat(numero1),
+                numero2: parseFloat(numero2),
+                operacao: operacao
+            })
+            })
+            .then(res => res.json())
+            .then(data => {
+            display.value = data.resultado;
+            numero1 = data.resultado;
+            numero2 = '';
+            operacao = '';
+            isSecond = false;
+            })
+            .catch(err => {
+            display.value = 'Erro';
+            console.error(err);
+            });
+        }
+        });
+    });
+    </script>
+</body>
+</html>
