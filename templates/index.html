@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Calculadora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="../static/calculator_icon.png" type="image/x-icon">
 </head>
-<body class="bg-muted">
+<body class="bg-light">
+  <h1 class="bg-secondary text-dark text-center rounded-bottom">/==CALCULADORA==\</h1>
   <div class="container py-5">
     <div class="row justify-content-center">
-      <!-- Painel da Calculadora -->
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm">
+      <div class="col-12 col-sm-10 col-md-6 col-lg-5">
+        <div class="card shadow">
           <div class="card-body bg-dark rounded">
+
             <!-- Visor -->
             <div class="mb-3">
-              <input
-                type="text"
-                class="form-control form-control-lg text-end"
-                id="display"
-                placeholder="0"
-                readonly
-              >
+              <input type="text" class="form-control text-right form-control-lg" id="display" placeholder="0" readonly>
             </div>
-            <div class="row g-4 ">
-              <!-- Teclado Numérico -->
-              <div class="col-lg-8 col-md-10 col-sm-12">
-                <div class="row gy-2">
-                  <!-- Linha 1: 7 8 9 -->
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">7</button>
+
+            <div class="row" style="min-height: 320px;">
+              <!-- Teclado numérico -->
+              <div class="col-9 d-flex flex-column justify-content-between">
+                <!-- Cada linha numérica -->
+                <div class="row mx-0">
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">7</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">8</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">8</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">9</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">9</button>
                   </div>
-                  <!-- Linha 2: 4 5 6 -->
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">4</button>
+                </div>
+                <div class="row mx-0">
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">4</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">5</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">5</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">6</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">6</button>
                   </div>
-                  <!-- Linha 3: 1 2 3 -->
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">1</button>
+                </div>
+                <div class="row mx-0">
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">1</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">2</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">2</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">3</button>
+                  <div class="col-4 px-2 mb-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">3</button>
                   </div>
-                  <!-- Linha 4: 0 . = -->
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">0</button>
+                </div>
+                <div class="row mx-0">
+                  <div class="col-4 px-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">0</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-secondary w-100">.</button>
+                  <div class="col-4 px-2">
+                    <button class="btn btn-secondary btn-lg w-100 py-3">.</button>
                   </div>
-                  <div class="col-4 p-1">
-                    <button class="btn btn-primary w-100">=</button>
+                  <div class="col-4 px-2">
+                    <button class="btn btn-primary btn-lg w-100 py-3">=</button>
                   </div>
                 </div>
               </div>
-              <!-- Seletor de Operações -->
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <div class="d-grid gap-2 h-100 p-1 ">
-                  <button class="btn btn-light m-1">+</button>
-                  <button class="btn btn-light m-1">−</button>
-                  <button class="btn btn-light m-1">×</button>
-                  <button class="btn btn-light m-1">÷</button>
-                  <button class="btn btn-danger m-1">C</button>
-                </div>
+
+              <!-- Operadores -->
+              <div class="col-3 d-flex flex-column justify-content-between">
+                <button class="btn btn-light btn-lg btn-block mb-2">+</button>
+                <button class="btn btn-light btn-lg btn-block mb-2">−</button>
+                <button class="btn btn-light btn-lg btn-block mb-2">×</button>
+                <button class="btn btn-light btn-lg btn-block mb-2">÷</button>
+                <button class="btn btn-danger btn-lg btn-block">C</button>
               </div>
             </div>
+
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </body>
