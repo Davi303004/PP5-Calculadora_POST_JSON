@@ -1,6 +1,9 @@
+# python3 -m venv venv
+# venv\Scripts\activate
+# pip install flask
 from flask import Flask, request, render_template, jsonify
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates',static_folder = 'statics',static_url_path = '/')
 
 @app.route('/')
 def index():
