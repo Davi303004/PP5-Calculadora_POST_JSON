@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link rel="shortcut icon" href="../static/calculator_icon.png" type="image/x-icon">
 </head>
 <body class="bg-light">
-  <h1 class="bg-secondary text-dark text-center rounded-bottom">/==CALCULADORA==\</h1>
   <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-6 col-lg-5">
@@ -85,63 +84,7 @@
       </div>
     </div>
   </div>
-</body>
-    <script type="text/javascript">
-    let numero1 = '';
-    let numero2 = '';
-    let operacao = '';
-    let isSecond = false;
-
-    const display = document.getElementById('display');
-    const botoes = document.querySelectorAll('button');
-
-    botoes.forEach(btn => {
-        btn.addEventListener('click', () => {
-        let valor = btn.innerText;
-
-        if (!isNaN(valor) || valor === '.') {
-            if (!isSecond) {
-            numero1 += valor;
-            display.value = numero1;
-            } else {
-            numero2 += valor;
-            display.value = numero2;
-            }
-        } else if (['+', '−', '×', '÷'].includes(valor)) {
-            operacao = valor;
-            isSecond = true;
-        }
-         else if (valor === 'C') {
-            numero1 = '';
-            numero2 = '';
-            operacao = '';
-            isSecond = false;
-            display.value = '';
-        } else if (valor === '=') {
-            fetch('/calcular', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                numero1: parseFloat(numero1),
-                numero2: parseFloat(numero2),
-                operacao: operacao
-            })
-            })
-            .then(res => res.json())
-            .then(data => {
-            display.value = data.resultado;
-            numero1 = data.resultado;
-            numero2 = '';
-            operacao = '';
-            isSecond = false;
-            })
-            .catch(err => {
-            display.value = 'Erro';
-            console.error(err);
-            });
-        }
-        });
-    });
-    </script>
+  
+  <script type="text/javascript" src="index.js" ></script>
 </body>
 </html>
